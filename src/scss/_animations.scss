@@ -1,0 +1,13 @@
+/* Transitions length */
+$speed-fast: 250ms;
+$speed-medium: 500ms;
+$speed-slow: 1000ms;
+$speed-xslow: 1500ms;
+
+/* As JS is used to start transitions, while no JS, cancel everything (Good for SEO) */
+.no-js * {
+  opacity: 1 !important;
+  transition-delay: 0s !important;
+  transform: none !important;
+  clip-path: none !important;
+}

@@ -1,0 +1,40 @@
+/*
+ * Brand Colors
+ */
+$brand-color-1: #e0a291;
+$brand-color-2: #24464b;
+
+/*
+ * Basic Colors
+ */
+$brand-white: #fff;
+$brand-black: #242428;
+$brand-grey: #999;
+
+.color-brand-white {
+  color: $brand-white;
+}
+
+.color-brand-black {
+  color: $brand-black;
+}
+
+.color-brand-grey {
+  color: $brand-grey;
+}
+
+/*
+ * Social Medias
+ */
+$facebook: #3b5998;
+$twitter: #1da1f2;
+$youtube: #f00;
+$instagarm: #4c5fd7;
+$pinterest: #bd081c;
+
+/*
+ * User Interface
+ */
+$ui-success: #3cb73a;
+$ui-error: #f00;
+$ui-warning: #ff6828;

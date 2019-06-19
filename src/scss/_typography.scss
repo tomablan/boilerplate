@@ -1,0 +1,34 @@
+/* Fonts families */
+$font-primary: "Montserrat", sans-serif;
+$font-secondary: "Arial", serif;
+
+/* Default style - text */
+body {
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: $font-primary;
+  color: $brand-white;
+
+  /* Responsive small */
+  @media screen and (max-width: $bp-small) {
+    font-size: 14px;
+  }
+}
+
+a {
+  color: $brand-color-1;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+/* Fonts declaration */
+
+/* @font-face {
+  font-family: 'Montserrat';
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"), url("../fonts/Montserrat-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+} */
