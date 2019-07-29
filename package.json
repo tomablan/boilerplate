@@ -1,6 +1,6 @@
 {
   "name": "PROJECT-NAME",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "NPM package definition for a builder package",
   "author": "Thomas BLANC <t.blanc@herewecom.fr>",
   "license": "ISC",
@@ -41,7 +41,7 @@
     "watch:js": "onchange \"./src/js/\" -v -k -- run-s build:js",
     "build:js": "run-s uglify",
     "uglify": "mkdirp ./assets/js/ -p && uglifyjs ./src/js/*.js -o ./assets/js/app.js -c drop_debugger=false",
-    "babelify": "mkdirp ./assets/js/ -p && foreach -g \"src/js/*.js\" -x \"rm assets/js/#{name}.min.js &&  npx babel #{path} --out-file assets/js/#{name}.min.js --presets minify\"",
+    "babelify": "mkdirp ./assets/js/ -p && foreach -g \"src/js/*.js\" -x \"npx babel #{path} --out-file assets/js/#{name}.min.js --presets minify\"",
     "watch:images": "onchange \"./src/img/\" -v -k -- run-s build:images",
     "build:images": "run-s imagemin svgo",
     "icons": "svgo -f ./img/ -o ./assets/img/",
