@@ -1,11 +1,16 @@
 {
   "name": "PROJECT-NAME",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NPM package definition for a builder package",
   "author": "Thomas BLANC <t.blanc@herewecom.fr>",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "autoprefixer": "latest",
+    "babel-minify": "^0.5.0",
+    "babel-preset-minify": "^0.5.0",
     "browser-sync": "latest",
     "eslint": "latest",
     "eslint-config-standard": "latest",
@@ -25,7 +30,6 @@
     "stylelint-config-standard": "latest",
     "svg-sprite-generator": "latest",
     "svgo": "latest",
-    "uglifyjs-folder": "^1.5.1"
   },
   "scripts": {
     "clean": "rimraf assets/{css/*,js/*,images/*}",
@@ -37,6 +41,7 @@
     "watch:js": "onchange \"./src/js/\" -v -k -- run-s build:js",
     "build:js": "run-s uglify",
     "uglify": "mkdirp ./assets/js/ -p && uglifyjs ./src/js/*.js -o ./assets/js/app.js -c drop_debugger=false",
+    "babelify": "mkdirp ./assets/js/ -p && foreach -g \"src/js/*.js\" -x \"rm assets/js/#{name}.min.js &&  npx babel #{path} --out-file assets/js/#{name}.min.js --presets minify\"",
     "watch:images": "onchange \"./src/img/\" -v -k -- run-s build:images",
     "build:images": "run-s imagemin svgo",
     "icons": "svgo -f ./img/ -o ./assets/img/",
@@ -54,7 +59,10 @@
     "npm": "^5.8.0"
   },
   "stylelint": {
-    "extends": "stylelint-config-standard",
+    "extends": "stylelint-config-standard"
+  },
+  "eslintConfig": {
+    "extends": "standard",
     "rules": {
       "at-rule-no-unknown": [
         true,
@@ -71,7 +79,28 @@
       ]
     }
   },
-  "eslintConfig": {
-    "extends": "standard"
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "targets": "> 0.25%, not dead"
+        }
+      ],
+      [
+        "minify",
+        {
+          "mangle": {
+            "exclude": [
+              "MyCustomError"
+            ]
+          },
+          "unsafe": {
+            "typeConstructors": false
+          },
+          "keepFnName": true
+        }
+      ]
+    ]
   }
 }
