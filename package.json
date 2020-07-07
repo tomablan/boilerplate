@@ -58,7 +58,7 @@
     "reload": "browser-sync reload"
   },
   "dependencies": {
-    "npm": "^5.8.0"
+    "npm": "^6.14.6"
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
